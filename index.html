@@ -149,14 +149,32 @@
         }
 
         .hero {
-            padding: 5rem 0 6rem;
+            position: relative;
+            padding: 7rem 0 7rem;
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.80), rgba(10, 10, 10, 0.84)),
+                url('assets/hero-background.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
-        .hero__grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-            gap: 3rem;
-            align-items: center;
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(17, 17, 17, 0.82) 0%, rgba(17, 17, 17, 0.62) 40%, rgba(17, 17, 17, 0.48) 100%);
+            pointer-events: none;
+        }
+
+        .hero .wrap {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__copy {
+            max-width: 760px;
         }
 
         .hero__rule {
@@ -172,7 +190,7 @@
             font-weight: 800;
             line-height: 1.08;
             letter-spacing: -0.04em;
-            max-width: 720px;
+            max-width: 760px;
             margin-bottom: 1.6rem;
         }
 
@@ -180,28 +198,8 @@
             font-size: 1.08rem;
             line-height: 1.85;
             color: var(--text-sub);
-            max-width: 560px;
+            max-width: 640px;
             margin-bottom: 2rem;
-        }
-
-        .hero__visual {
-            border: 1px solid var(--gold-line);
-            background: var(--bg-raised);
-            padding: 0.8rem;
-        }
-
-        .hero__visual img {
-            width: 100%;
-            border: 1px solid rgba(245, 242, 235, 0.05);
-        }
-
-        .hero__caption {
-            margin-top: 0.95rem;
-            font-size: 0.74rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-dim);
         }
 
         .offer,
@@ -414,26 +412,16 @@
             letter-spacing: 0.03em;
         }
 
-        @media (max-width: 980px) {
-            .hero__grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero {
-                padding: 4rem 0 5rem;
-            }
-
-            .hero__visual {
-                max-width: 760px;
-            }
-        }
-
         @media (max-width: 820px) {
             .offer,
             .proof,
             .cta-final {
                 padding: 4rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0 5rem;
+                background-position: center center;
             }
 
             .offer__grid {
@@ -459,6 +447,10 @@
                 font-size: 0.62rem;
                 letter-spacing: 0.1em;
             }
+
+            .hero__h1 {
+                font-size: clamp(2rem, 10vw, 3.25rem);
+            }
         }
 
         @media (max-width: 600px) {
@@ -479,6 +471,15 @@
             .footer .wrap {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .hero {
+                padding: 4.2rem 0 4.2rem;
+                background-position: center center;
+            }
+
+            .hero__sub {
+                font-size: 1rem;
             }
         }
 
@@ -508,19 +509,12 @@
 
     <section class="hero">
         <div class="wrap">
-            <div class="hero__grid">
-                <div class="hero__copy">
-                    <p class="label">Narrative Systems</p>
-                    <hr class="hero__rule">
-                    <h1 class="hero__h1">I turn outdated excursion and charter websites into premium booking engines.</h1>
-                    <p class="hero__sub">Using journalism-led positioning and editorial structure, I help operators book more direct trips at higher rates with clearer offers, sharper trust signals, and cleaner paths to action.</p>
-                    <a href="mailto:usadrew00@icloud.com?subject=Graham%20%26%20Gold%20Inquiry" class="btn btn--gold">Request a Fit Call</a>
-                </div>
-
-                <div class="hero__visual">
-                    <img src="assets/BEFORE-AFTER.png" alt="Before and after premium website repositioning for The Pink Boat">
-                    <p class="hero__caption">Proof: repositioning, not generic web design</p>
-                </div>
+            <div class="hero__copy">
+                <p class="label">Narrative Systems</p>
+                <hr class="hero__rule">
+                <h1 class="hero__h1">I turn outdated excursion and charter websites into premium booking engines.</h1>
+                <p class="hero__sub">Using journalism-led positioning and editorial structure, I help operators book more direct trips at higher rates with clearer offers, sharper trust signals, and cleaner paths to action.</p>
+                <a href="mailto:usadrew00@icloud.com?subject=Graham%20%26%20Gold%20Inquiry" class="btn btn--gold">Request a Fit Call</a>
             </div>
         </div>
     </section>
@@ -582,7 +576,7 @@
 
                 <div class="case__sub-block">
                     <div class="case__img">
-                        <img src="assets/dolphin-proof2.png" alt="Live booking bar and expert positioning The Pink Boat">
+                        <img src="assets/dolphin-proof2.png" alt="Live booking bar and expert positioning - The Pink Boat">
                     </div>
                     <p class="case__desc">The live booking bar creates urgency and simplifies the path to action. The owner and crew story helps position the business as a more recognizable local expert rather than just another operator.</p>
                 </div>
