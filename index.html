@@ -153,61 +153,37 @@
             align-items: center;
             overflow: hidden;
             border-bottom: 1px solid var(--gold-line);
-            background-color: #0f0f0f;
+            background: #0f0f0f;
         }
 
         .hero__bg {
             position: absolute;
             inset: 0;
             z-index: 0;
-            background-image: url('assets/hero-background.png');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            transform: scale(1.01);
-        }
-
-        .hero__bg::before {
-            content: "";
-            position: absolute;
-            inset: 0;
             background:
                 linear-gradient(
                     90deg,
-                    rgba(10, 10, 10, 0.92) 0%,
-                    rgba(10, 10, 10, 0.88) 16%,
-                    rgba(10, 10, 10, 0.72) 28%,
-                    rgba(10, 10, 10, 0.48) 40%,
-                    rgba(10, 10, 10, 0.16) 56%,
-                    rgba(10, 10, 10, 0.04) 74%,
+                    rgba(10, 10, 10, 0.90) 0%,
+                    rgba(10, 10, 10, 0.84) 16%,
+                    rgba(10, 10, 10, 0.70) 28%,
+                    rgba(10, 10, 10, 0.34) 42%,
+                    rgba(10, 10, 10, 0.10) 56%,
+                    rgba(10, 10, 10, 0.02) 72%,
                     rgba(10, 10, 10, 0.00) 100%
-                );
-        }
-
-        .hero__bg::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(10, 10, 10, 0.18) 0%,
-                    rgba(10, 10, 10, 0.06) 24%,
-                    rgba(10, 10, 10, 0.00) 60%,
-                    rgba(10, 10, 10, 0.10) 100%
-                );
+                ),
+                url('assets/hero-background.png') right center / cover no-repeat;
         }
 
         .hero .wrap {
             position: relative;
             z-index: 2;
             width: 100%;
-            padding-top: 6.75rem;
-            padding-bottom: 6rem;
+            padding-top: 6.5rem;
+            padding-bottom: 5.75rem;
         }
 
         .hero__copy {
-            max-width: 540px;
+            max-width: 520px;
         }
 
         .hero__rule {
@@ -230,8 +206,8 @@
         .hero__sub {
             max-width: 500px;
             font-size: 1rem;
-            line-height: 1.9;
-            color: rgba(245, 242, 235, 0.86);
+            line-height: 1.85;
+            color: rgba(245, 242, 235, 0.84);
             margin-bottom: 2rem;
         }
 
@@ -451,25 +427,22 @@
             }
 
             .hero__bg {
-                background-position: 64% center;
-            }
-
-            .hero__bg::before {
                 background:
                     linear-gradient(
                         90deg,
-                        rgba(10, 10, 10, 0.94) 0%,
-                        rgba(10, 10, 10, 0.90) 18%,
-                        rgba(10, 10, 10, 0.78) 30%,
-                        rgba(10, 10, 10, 0.52) 42%,
-                        rgba(10, 10, 10, 0.18) 58%,
-                        rgba(10, 10, 10, 0.03) 76%,
+                        rgba(10, 10, 10, 0.92) 0%,
+                        rgba(10, 10, 10, 0.88) 18%,
+                        rgba(10, 10, 10, 0.74) 32%,
+                        rgba(10, 10, 10, 0.40) 48%,
+                        rgba(10, 10, 10, 0.12) 62%,
+                        rgba(10, 10, 10, 0.02) 78%,
                         rgba(10, 10, 10, 0.00) 100%
-                    );
+                    ),
+                    url('assets/hero-background.png') 68% center / cover no-repeat;
             }
 
             .hero__copy {
-                max-width: 510px;
+                max-width: 500px;
             }
 
             .hero__h1 {
@@ -490,23 +463,20 @@
 
             .hero .wrap {
                 padding-top: 5rem;
-                padding-bottom: 4.4rem;
+                padding-bottom: 4.25rem;
             }
 
             .hero__bg {
-                background-position: 72% center;
-            }
-
-            .hero__bg::before {
                 background:
                     linear-gradient(
                         180deg,
-                        rgba(10, 10, 10, 0.88) 0%,
-                        rgba(10, 10, 10, 0.70) 18%,
-                        rgba(10, 10, 10, 0.48) 38%,
-                        rgba(10, 10, 10, 0.30) 68%,
-                        rgba(10, 10, 10, 0.22) 100%
-                    );
+                        rgba(10, 10, 10, 0.84) 0%,
+                        rgba(10, 10, 10, 0.68) 18%,
+                        rgba(10, 10, 10, 0.50) 38%,
+                        rgba(10, 10, 10, 0.34) 60%,
+                        rgba(10, 10, 10, 0.26) 100%
+                    ),
+                    url('assets/hero-background.png') 72% center / cover no-repeat;
             }
 
             .hero__copy {
@@ -554,12 +524,8 @@
             }
 
             .hero .wrap {
-                padding-top: 4.25rem;
-                padding-bottom: 3.7rem;
-            }
-
-            .hero__bg {
-                background-position: 74% top;
+                padding-top: 4.1rem;
+                padding-bottom: 3.5rem;
             }
 
             .hero__rule {
@@ -600,8 +566,8 @@
             }
 
             .hero .wrap {
-                padding-top: 3.9rem;
-                padding-bottom: 3.2rem;
+                padding-top: 3.75rem;
+                padding-bottom: 3.05rem;
             }
 
             .hero__h1 {
