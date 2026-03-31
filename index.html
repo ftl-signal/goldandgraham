@@ -12,18 +12,18 @@
     <style>
         :root {
             --bg: #111111;
-            --bg-raised: #1C1C1C;
-            --text: #F5F2EB;
-            --text-sub: #B0ACA3;
-            --text-dim: #706C63;
-            --gold: #C9A66B;
-            --gold-line: rgba(201, 166, 107, 0.30);
+            --bg-raised: #1c1c1c;
+            --text: #f5f2eb;
+            --text-sub: #c9c2b7;
+            --text-dim: #857f74;
+            --gold: #c9a66b;
+            --gold-line: rgba(201, 166, 107, 0.28);
             --rule: rgba(245, 242, 235, 0.07);
             --ff: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
             --w-page: 1120px;
         }
 
-        *, *::before, *::after {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -83,7 +83,11 @@
             padding: 0.95em 2.1em;
             border: none;
             cursor: pointer;
-            transition: background 0.2s ease, color 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
         }
 
         .btn--gold {
@@ -101,7 +105,8 @@
             top: 0;
             z-index: 100;
             background: rgba(17, 17, 17, 0.96);
-            border-bottom: 1px solid var(--bg-raised);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            backdrop-filter: blur(10px);
         }
 
         .header .wrap {
@@ -120,7 +125,6 @@
         .header__logo {
             height: 54px;
             width: auto;
-            display: block;
         }
 
         .header__nav {
@@ -144,62 +148,66 @@
 
         .hero {
             position: relative;
-            min-height: 840px;
+            min-height: 860px;
             display: flex;
-            align-items: flex-start;
-            padding: 8rem 0 6.5rem;
-            background-image:
-                linear-gradient(rgba(10, 10, 10, 0.12), rgba(10, 10, 10, 0.16)),
-                url('assets/hero-background.png');
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--gold-line);
+            background-color: #0f0f0f;
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: url('assets/hero-background.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            overflow: hidden;
+            transform: scale(1.01);
         }
 
-        .hero::before {
+        .hero__bg::before {
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 1;
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(17, 17, 17, 0.82) 0%,
-                    rgba(17, 17, 17, 0.48) 14%,
-                    rgba(17, 17, 17, 0.20) 30%,
-                    rgba(17, 17, 17, 0.18) 100%
-                );
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 1;
             background:
                 linear-gradient(
                     90deg,
-                    rgba(17, 17, 17, 0.94) 0%,
-                    rgba(17, 17, 17, 0.90) 14%,
-                    rgba(17, 17, 17, 0.80) 28%,
-                    rgba(17, 17, 17, 0.60) 42%,
-                    rgba(17, 17, 17, 0.34) 58%,
-                    rgba(17, 17, 17, 0.16) 74%,
-                    rgba(17, 17, 17, 0.06) 100%
+                    rgba(10, 10, 10, 0.92) 0%,
+                    rgba(10, 10, 10, 0.88) 16%,
+                    rgba(10, 10, 10, 0.72) 28%,
+                    rgba(10, 10, 10, 0.48) 40%,
+                    rgba(10, 10, 10, 0.16) 56%,
+                    rgba(10, 10, 10, 0.04) 74%,
+                    rgba(10, 10, 10, 0.00) 100%
                 );
-            pointer-events: none;
+        }
+
+        .hero__bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(10, 10, 10, 0.18) 0%,
+                    rgba(10, 10, 10, 0.06) 24%,
+                    rgba(10, 10, 10, 0.00) 60%,
+                    rgba(10, 10, 10, 0.10) 100%
+                );
         }
 
         .hero .wrap {
             position: relative;
             z-index: 2;
             width: 100%;
+            padding-top: 6.75rem;
+            padding-bottom: 6rem;
         }
 
         .hero__copy {
-            max-width: 640px;
+            max-width: 540px;
         }
 
         .hero__rule {
@@ -207,25 +215,24 @@
             height: 1px;
             background: var(--gold);
             border: 0;
-            margin: 1rem 0 1.9rem;
+            margin: 1rem 0 1.85rem;
         }
 
         .hero__h1 {
-            font-size: clamp(2.8rem, 5.4vw, 5rem);
+            font-size: clamp(2.9rem, 5.4vw, 5rem);
             font-weight: 800;
             line-height: 0.96;
-            letter-spacing: -0.06em;
-            max-width: 640px;
-            margin-bottom: 1.7rem;
+            letter-spacing: -0.065em;
+            margin-bottom: 1.55rem;
             text-wrap: balance;
         }
 
         .hero__sub {
+            max-width: 500px;
             font-size: 1rem;
             line-height: 1.9;
-            color: rgba(245, 242, 235, 0.84);
-            max-width: 620px;
-            margin-bottom: 2.2rem;
+            color: rgba(245, 242, 235, 0.86);
+            margin-bottom: 2rem;
         }
 
         .offer,
@@ -438,19 +445,35 @@
             letter-spacing: 0.03em;
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1180px) {
             .hero {
-                min-height: 760px;
-                padding: 7rem 0 5.8rem;
+                min-height: 780px;
+            }
+
+            .hero__bg {
+                background-position: 64% center;
+            }
+
+            .hero__bg::before {
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(10, 10, 10, 0.94) 0%,
+                        rgba(10, 10, 10, 0.90) 18%,
+                        rgba(10, 10, 10, 0.78) 30%,
+                        rgba(10, 10, 10, 0.52) 42%,
+                        rgba(10, 10, 10, 0.18) 58%,
+                        rgba(10, 10, 10, 0.03) 76%,
+                        rgba(10, 10, 10, 0.00) 100%
+                    );
             }
 
             .hero__copy {
-                max-width: 590px;
+                max-width: 510px;
             }
 
             .hero__h1 {
-                max-width: 590px;
-                font-size: clamp(2.5rem, 5vw, 4.3rem);
+                font-size: clamp(2.6rem, 5vw, 4.35rem);
             }
         }
 
@@ -463,39 +486,31 @@
 
             .hero {
                 min-height: auto;
-                padding: 5rem 0 4.2rem;
-                background-position: 68% center;
             }
 
-            .hero::before {
+            .hero .wrap {
+                padding-top: 5rem;
+                padding-bottom: 4.4rem;
+            }
+
+            .hero__bg {
+                background-position: 72% center;
+            }
+
+            .hero__bg::before {
                 background:
                     linear-gradient(
                         180deg,
-                        rgba(17, 17, 17, 0.86) 0%,
-                        rgba(17, 17, 17, 0.62) 18%,
-                        rgba(17, 17, 17, 0.36) 38%,
-                        rgba(17, 17, 17, 0.34) 100%
-                    );
-            }
-
-            .hero::after {
-                background:
-                    linear-gradient(
-                        180deg,
-                        rgba(17, 17, 17, 0.84) 0%,
-                        rgba(17, 17, 17, 0.72) 20%,
-                        rgba(17, 17, 17, 0.58) 44%,
-                        rgba(17, 17, 17, 0.46) 68%,
-                        rgba(17, 17, 17, 0.34) 100%
+                        rgba(10, 10, 10, 0.88) 0%,
+                        rgba(10, 10, 10, 0.70) 18%,
+                        rgba(10, 10, 10, 0.48) 38%,
+                        rgba(10, 10, 10, 0.30) 68%,
+                        rgba(10, 10, 10, 0.22) 100%
                     );
             }
 
             .hero__copy {
                 max-width: 100%;
-            }
-
-            .hero__h1 {
-                max-width: 640px;
             }
 
             .offer__grid {
@@ -538,57 +553,31 @@
                 padding: 0.85em 1.55em;
             }
 
-            .hero {
-                padding: 4rem 0 3.6rem;
-                background-position: 72% top;
+            .hero .wrap {
+                padding-top: 4.25rem;
+                padding-bottom: 3.7rem;
             }
 
-            .hero::before {
-                background:
-                    linear-gradient(
-                        180deg,
-                        rgba(17, 17, 17, 0.90) 0%,
-                        rgba(17, 17, 17, 0.72) 18%,
-                        rgba(17, 17, 17, 0.54) 36%,
-                        rgba(17, 17, 17, 0.46) 100%
-                    );
-            }
-
-            .hero::after {
-                background:
-                    linear-gradient(
-                        180deg,
-                        rgba(17, 17, 17, 0.78) 0%,
-                        rgba(17, 17, 17, 0.70) 24%,
-                        rgba(17, 17, 17, 0.60) 46%,
-                        rgba(17, 17, 17, 0.52) 70%,
-                        rgba(17, 17, 17, 0.42) 100%
-                    );
-            }
-
-            .hero__copy {
-                max-width: 100%;
+            .hero__bg {
+                background-position: 74% top;
             }
 
             .hero__rule {
                 width: 56px;
-                margin: 0.95rem 0 1.45rem;
+                margin: 0.95rem 0 1.35rem;
             }
 
             .hero__h1 {
                 font-size: clamp(2.15rem, 12vw, 3.35rem);
-                line-height: 0.96;
+                line-height: 0.97;
                 letter-spacing: -0.065em;
-                max-width: 100%;
-                margin-bottom: 1.2rem;
-                text-wrap: pretty;
+                margin-bottom: 1.1rem;
             }
 
             .hero__sub {
                 font-size: 0.92rem;
                 line-height: 1.72;
-                max-width: 100%;
-                margin-bottom: 1.65rem;
+                margin-bottom: 1.55rem;
             }
 
             .footer .wrap {
@@ -598,10 +587,6 @@
         }
 
         @media (max-width: 420px) {
-            .header__nav {
-                gap: 0.75rem;
-            }
-
             .header__nav .header__link {
                 display: none;
             }
@@ -614,9 +599,9 @@
                 padding: 0.82em 1.35em;
             }
 
-            .hero {
-                padding: 3.6rem 0 3.2rem;
-                background-position: 74% top;
+            .hero .wrap {
+                padding-top: 3.9rem;
+                padding-bottom: 3.2rem;
             }
 
             .hero__h1 {
@@ -643,6 +628,7 @@
     </header>
 
     <section class="hero">
+        <div class="hero__bg"></div>
         <div class="wrap">
             <div class="hero__copy">
                 <p class="label">Narrative Systems</p>
@@ -701,7 +687,7 @@
 
             <div class="case">
                 <p class="case__tag">Case Study</p>
-                <h3 class="case__name">The Pink Boat Dolphin Cruises - Orange Beach, AL</h3>
+                <h3 class="case__name">The Pink Boat Dolphin Cruises • Orange Beach, AL</h3>
 
                 <div class="case__img">
                     <img src="assets/BEFORE-AFTER.png" alt="Before and after The Pink Boat website redesign">
@@ -711,7 +697,7 @@
 
                 <div class="case__sub-block">
                     <div class="case__img">
-                        <img src="assets/dolphin-proof2.png" alt="Live booking bar and expert positioning - The Pink Boat">
+                        <img src="assets/dolphin-proof2.png" alt="Live booking bar and expert positioning for The Pink Boat">
                     </div>
                     <p class="case__desc">The live booking bar creates urgency and simplifies the path to action. The owner and crew story helps position the business as a more recognizable local expert rather than just another operator.</p>
                 </div>
@@ -719,13 +705,13 @@
 
             <div class="case">
                 <p class="case__tag">Case Study</p>
-                <h3 class="case__name">The Florida Signal - Broward County, FL</h3>
+                <h3 class="case__name">The Florida Signal • Broward County, FL</h3>
 
                 <div class="case__img">
                     <img src="assets/fl-signal-showcase.png" alt="The Florida Signal editorial intelligence platform">
                 </div>
 
-                <p class="case__desc">Built a live editorial intelligence platform from scratch in 15 hours. Clean, authoritative design with structured public-record signals and a premium subscription-ready presentation.</p>
+                <p class="case__desc">Built a live editorial intelligence platform from scratch with structured public-record signals, premium positioning, and a subscription-ready information design system.</p>
             </div>
         </div>
     </section>
